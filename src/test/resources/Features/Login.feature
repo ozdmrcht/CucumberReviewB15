@@ -32,13 +32,12 @@ Feature: test the login functionality
     And clicks on Login Button
     Then the user is not logged in
 
-    Scenario Outline: validate the wrong credentials error message
-      When user enters the "<username>" and "<password>"
-      And clicks on Login Button
-      Then user see a message "<errorMsg>"
-      Examples:
-      |username|password |errorMsg|
-      |adminx| sss|invalidCredentials|
-      |admin2| dsdds|invalidCredentials|
-      |admin3| dsds|invalidCredentials|
-
+  Scenario Outline:validate the wrong credentials error message
+    When user enters the "<username>" and "<password>"
+    And clicks on Login Button
+    Then user see a message "<errorMsg>"
+    Examples:
+      |username | password               |                 errorMsg|
+      |Admin    |    abracadbra          | Invalid credentials     |
+      |         |                        | Username cannot be empty|
+      |         | Hum@nhrm123            | Username cannot be empty|

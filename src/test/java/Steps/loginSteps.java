@@ -2,6 +2,7 @@ package Steps;
 import Utils.commonMethods;
 import Utils.ConfigReader;
 import io.cucumber.java.en.*;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -27,9 +28,6 @@ public class loginSteps extends commonMethods {
         System.out.println("looged in");
     }
 
-
-
-
     @When("user enters a username {string} and password {string}")
     public void user_enters_a_username_and_password(String username, String password) {
         WebElement usernameTextBox = driver.findElement(By.id("txtUsername"));
@@ -51,5 +49,7 @@ public class loginSteps extends commonMethods {
     @Then("user see a message {string}")
     public void user_see_a_message(String errorMsg) {
         System.out.println(errorMsg);
+        String actualError=login.errorLogin.getText();
+        Assert.assertEquals(expectedErrorMsg,actualError);
     }
 }
